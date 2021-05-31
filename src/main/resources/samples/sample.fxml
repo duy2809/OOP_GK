@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="664.0" prefWidth="1139.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <children>
+        <MenuBar layoutX="2.0" prefHeight="28.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+      <AnchorPane layoutX="214.0" layoutY="28.0" prefHeight="517.0" prefWidth="926.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="119.0" AnchorPane.leftAnchor="214.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
+         <children>
+            <ImageView fx:id="myImageView" fitHeight="517.0" fitWidth="295.0" layoutX="316.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children></AnchorPane>
+        <AnchorPane layoutY="28.0" prefHeight="560.0" prefWidth="214.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="28.0">
+            <children>
+                <Label layoutX="24.0" layoutY="186.0" text="Start" />
+                <TextField fx:id="startText" layoutX="58.0" layoutY="182.0" prefHeight="25.0" prefWidth="136.0" AnchorPane.topAnchor="182.0">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </TextField>
+                <Label layoutX="27.0" layoutY="225.0" text="End" />
+                <Button fx:id="findBtn" layoutX="80.0" layoutY="266.0" mnemonicParsing="false" onAction="#findWays" text="Find">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+                <Button layoutX="25.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleChooseFile" prefHeight="25.0" prefWidth="167.0" text="Read File" />
+                <TextField fx:id="endText" layoutX="58.0" layoutY="221.0" prefHeight="25.0" prefWidth="136.0">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </TextField>
+                <Button fx:id="exportPngBtn" layoutX="25.0" layoutY="74.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="167.0" text="Export PNG" />
+                <Button fx:id="exportSvgBtn" layoutX="25.0" layoutY="125.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="167.0" text="Export SVG" />
+            <HBox alignment="CENTER" layoutX="37.0" layoutY="350.0" prefHeight="20.0" prefWidth="136.0">
+               <children>
+                  <Button fx:id="previousBtn" mnemonicParsing="false" onAction="#findPreviousWays" text="&lt;">
+                     <HBox.margin>
+                        <Insets right="15.0" />
+                     </HBox.margin></Button>
+                  <Label fx:id="orderLabel">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                      <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#findNextWays" text="&gt;">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin></Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="27.0" layoutY="308.0" prefHeight="25.0" prefWidth="167.0">
+               <children>
+                  <Label fx:id="totalCaseLabel" />
+               </children>
+            </HBox>
+            <VBox alignment="CENTER" layoutX="18.0" layoutY="526.0" prefHeight="107.0" prefWidth="174.0">
+               <children>
+                  <Label text="Đỗ Duy Anh 20184027">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label text="Vũ Công Thành 20184197">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label text="Phạm Huy Kỳ Anh 20184038">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Label>
+               </children>
+            </VBox>
+            <ImageView fitHeight="107.0" fitWidth="73.0" layoutX="69.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/BK.jpg" />
+               </image>
+            </ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="214.0" layoutY="545.0" prefHeight="119.0" prefWidth="912.0" style="-fx-background-color: lightgray;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="214.0" AnchorPane.rightAnchor="-1.0">
+            <children>
+                <Label fx:id="pathLabel" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="91.0" prefWidth="813.0">
+                    <font>
+                        <Font size="25.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
