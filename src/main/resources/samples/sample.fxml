@@ -50,8 +50,8 @@
                         <Insets />
                     </opaqueInsets>
                 </TextField>
-                <Button fx:id="exportPngBtn" layoutX="25.0" layoutY="74.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="167.0" text="Export PNG" />
-                <Button fx:id="exportSvgBtn" layoutX="25.0" layoutY="125.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="167.0" text="Export SVG" />
+                <Button fx:id="exportPngBtn" layoutX="25.0" layoutY="74.0" mnemonicParsing="false" onAction="#handleExportPNG" prefHeight="25.0" prefWidth="167.0" text="Export PNG" />
+                <Button fx:id="exportSvgBtn" layoutX="25.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleExportSVG" prefHeight="25.0" prefWidth="167.0" text="Export SVG" />
             <HBox alignment="CENTER" layoutX="37.0" layoutY="350.0" prefHeight="20.0" prefWidth="136.0">
                <children>
                   <Button fx:id="previousBtn" mnemonicParsing="false" onAction="#findPreviousWays" text="&lt;">
@@ -68,9 +68,12 @@
                      </HBox.margin></Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="27.0" layoutY="308.0" prefHeight="25.0" prefWidth="167.0">
+            <HBox alignment="CENTER" layoutX="27.0" layoutY="308.0" prefHeight="25.0" prefWidth="155.0">
                <children>
-                  <Label fx:id="totalCaseLabel" />
+                  <Label fx:id="totalCaseLabel">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
                </children>
             </HBox>
             <VBox alignment="CENTER" layoutX="18.0" layoutY="526.0" prefHeight="107.0" prefWidth="174.0">
@@ -106,7 +109,7 @@
         </AnchorPane>
         <AnchorPane layoutX="214.0" layoutY="545.0" prefHeight="119.0" prefWidth="912.0" style="-fx-background-color: lightgray;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="214.0" AnchorPane.rightAnchor="-1.0">
             <children>
-                <Label fx:id="pathLabel" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="91.0" prefWidth="813.0">
+                <Label fx:id="pathLabel" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="91.0" prefWidth="900.0">
                     <font>
                         <Font size="25.0" />
                     </font>

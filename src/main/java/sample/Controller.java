@@ -18,8 +18,8 @@ import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.Map;
 
-import sample.file.ExportPng;
-import sample.file.ExportSvg;
+import sample.file.ExportGraph;
+import sample.file.ExportWay;
 import sample.file.Reader;
 import sample.graph.Graph;
 import sample.graph.Search;
@@ -53,7 +53,7 @@ public class Controller {
         nextBtn.setVisible(false);
     }
 
-    public void handleChooseFile(ActionEvent event) throws IOException{
+    public void handleChooseFile(ActionEvent event){
         System.out.println("Choosing file!");
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open File Dialog");
@@ -63,7 +63,7 @@ public class Controller {
             reader = new Reader();
             graph = reader.readFile(file.getAbsolutePath());
             map = graph.getMap();
-            ExportPng.export(map);
+            ExportGraph.export(map, "png");
 
             findBtn.setDisable(false);
             exportPngBtn.setDisable(false);
@@ -83,7 +83,7 @@ public class Controller {
         ways = search.search(graph);
         int totalCase = ways.size();
         if (totalCase > 0) {
-            ExportSvg.export(map, ways);
+            ExportWay.export(map, ways, "png");
             totalCaseLabel.setText("Total case: "+ totalCase);
             previousBtn.setVisible(true);
             nextBtn.setVisible(true);
@@ -124,5 +124,11 @@ public class Controller {
 
     public void handleExit(ActionEvent event) {
         Platform.exit();
+    }
+    public void handleExportSVG(ActionEvent event) {
+        ExportWay.export(map, ways, "svg");
+    }
+    public void handleExportPNG(ActionEvent event) {
+        ExportWay.export(map, ways, "png");
     }
 }

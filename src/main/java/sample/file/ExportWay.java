@@ -14,8 +14,8 @@ import java.util.Map;
 
 import static guru.nidi.graphviz.model.Factory.*;
 
-public class ExportSvg {
-    public static void export(Map<String, LinkedHashSet<String>> map, ArrayList<LinkedList<String>> ways) {
+public class ExportWay {
+    public static void export(Map<String, LinkedHashSet<String>> map, ArrayList<LinkedList<String>> ways, String formatOption) {
         String path = "src/main/resources/ways/";
         DeleteFolder.delete(path);
 
@@ -39,11 +39,12 @@ public class ExportSvg {
             }
 
             try {
-                Graphviz.fromGraph(g).height(250 * map.size()).render(Format.PNG).toFile(new File(path + "way_" + count + ".png"));
+                if (formatOption.equals("png"))
+                    Graphviz.fromGraph(g).height(250 * map.size()).render(Format.PNG).toFile(new File(path + "way_" + count + ".png"));
+                else Graphviz.fromGraph(g).height(250 * map.size()).render(Format.SVG).toFile(new File(path + "way_" + count + ".svg"));
             } catch (Exception e) {
                 System.out.println("Can't export way!");
             }
-
             count++;
         }
     }

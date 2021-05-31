@@ -12,8 +12,8 @@ import java.util.Map;
 import static guru.nidi.graphviz.model.Factory.mutGraph;
 import static guru.nidi.graphviz.model.Factory.mutNode;
 
-public class ExportPng {
-    public static void export(Map<String, LinkedHashSet<String>> map) {
+public class ExportGraph {
+    public static void export(Map<String, LinkedHashSet<String>> map, String formatOption) {
         MutableGraph g = mutGraph("graph png").setDirected(true);
 
         for (Map.Entry<String, LinkedHashSet<String>> set : map.entrySet()) {
@@ -28,7 +28,9 @@ public class ExportPng {
         try {
             String path = "src/main/resources/export/";
             DeleteFolder.delete(path);
-            Graphviz.fromGraph(g).height(250 * map.size()).render(Format.PNG).toFile(new File(path + "graph.png"));
+            if (formatOption.equals("png"))
+                Graphviz.fromGraph(g).height(250 * map.size()).render(Format.PNG).toFile(new File(path + "graph.png"));
+            else Graphviz.fromGraph(g).height(250 * map.size()).render(Format.PNG).toFile(new File(path + "graph.svg"));
         } catch (Exception e) {
             System.out.println("Can't export png!");
         }
